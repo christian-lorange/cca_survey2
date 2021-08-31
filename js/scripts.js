@@ -1,3 +1,9 @@
+// Start of load user ID
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const user_id = urlParams.get('id')
+// End of load user ID
+
 // Start of country
 country=["Afghanistan",
 "Aland Islands",
@@ -1048,6 +1054,7 @@ myObj.save();  //Send data to server
 
 async function set_values(){
   const query = new Parse.Query("cca_survey2"); //Connect to server
+  query.equalTo("user_id", user_id);
   query.limit(1);
   results = await query.find();
 
@@ -1072,11 +1079,17 @@ for (let i = 0; i < inputs_select.length; i++) {
     l=k.indexOf(inputs_select[i].id)
     console.log(i)
       document.getElementById(inputs_select[i].id).value=results[0].get(k[l]);
-
-  }
+ }
 }
 
-
+setTimeout(function() {prep_table()}, 3000);
 }
 
+function load(){
+  setTimeout(function() {
+  set_values()
+}, 1000);
+}
+
+load();
 
