@@ -1045,6 +1045,7 @@ await sleep(30)
 console.log(i)
 myObj.set(input_ids[i],input_vals[i])
 }
+myObj.set("user_id",user_id)
 setTimeout(function() {
 myObj.save();  //Send data to server
 }, 3000);
@@ -1055,6 +1056,7 @@ myObj.save();  //Send data to server
 async function set_values(){
   const query = new Parse.Query("cca_survey2"); //Connect to server
   query.equalTo("user_id", user_id);
+  query.descending("updatedAt");
   query.limit(1);
   results = await query.find();
 
