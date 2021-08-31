@@ -1,0 +1,243 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CCA Survey</title>
+  <meta name="description" content="Clean Cooking Alliance Survey">
+  <meta name="author" content="Dr. Christian L'Orange, OrangeHouse LLC">
+
+  <link rel="shortcut icon" type="image/png" href="https://orangehousellc.com/wp-content/uploads/sites/11/2017/04/orangehouse.png"/>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <link rel="stylesheet" href="css/awesomplete.css" type="text/css">
+  <script src="js/parse.min.js"></script>
+  <script type="text/javascript">
+    Parse.initialize("OrangeHouse");
+    //javascriptKey is required only if you have it on server.
+    Parse.serverURL = 'https://makai-hub.com/parse_OH/parse/'
+
+  </script>
+
+</head>
+
+<body>
+
+
+  <h2>Organizational Information</h2>
+  <h4>Organization Name:</h4>
+  <input id="org" placeholder="Organization Name" class="cca_input">
+
+  <h3>Company Financials</h3>
+  <h4>What is your total $USD revenue in 2020?</h4>
+  <span class="currencyinput">$<input id="tot_revenue" placeholder="Total Revenue Sales (USD)" class="cca_input currency" type="text" ></span>
+  <h4>Capital raised- Please provide details of capital raised from company inception to date.</h4>
+  <span class="currencyinput">$<input id="tot_investment" placeholder="Total Investment (USD)" class="cca_input currency" type="text"></span>
+  <h4>Of that amount of capital, how much are grants?</h4>
+  <span class="currencyinput">$<input id="tot_grants" placeholder="Total Grant Amount (USD)" class="cca_input currency" type="text"></span>
+
+  <h3>Company Demographics</h3>
+  <div class="container-fluid demographics">
+  <div class="row">
+    <div class="col-md-12">
+        <h4>Number of employees- male</h4>
+  <input id="male_employees" placeholder="# of Male Employees" class="cca_input" type="number">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <h4>Number of part time male employees</h4>
+  <input id="male_employees_pt" placeholder="# of Part Time Male Employees" class="cca_input_half" type="number">
+    </div>
+    <div class="col-md-6">
+        <h4>Number of full time male employees</h4>
+  <input id="male_employees_fl" placeholder="# of Full Time Male Employees" class="cca_input_half" type="number">
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid demographics" >
+  <div class="row">
+    <div class="col-md-12">
+        <h4>Number of employees- female</h4>
+  <input id="female_employees" placeholder="# of Female Employees" class="cca_input" type="number">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <h4>Number of part time female employees</h4>
+  <input id="female_employees_pt" placeholder="# of Part Time Female Employees" class="cca_input_half" type="number">
+    </div>
+    <div class="col-md-6">
+        <h4>Number of full time female employees</h4>
+  <input id="female_employees_fl" placeholder="# of Full Time Female Employees" class="cca_input_half" type="number">
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid demographics">
+  <div class="row">
+    <div class="col-md-12">
+        <h4>Number of non-binary employees</h4>
+  <input id="nonbinary_employees" placeholder="# of Non-Binary Employees" class="cca_input" type="number">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <h4>Number of part time non-binary employees</h4>
+  <input id="nonbinary_employees_pt" placeholder="# of Part Time Non-Binary Employees" class="cca_input_half" type="number">
+    </div>
+    <div class="col-md-6">
+        <h4>Number of full time non-binary employees</h4>
+  <input id="nonbinary_employees_fl" placeholder="# of Full Time Non-Binary Employees" class="cca_input_half" type="number">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+   <h2>Cookstove Sales Detail</h2>
+   <div class="container-fluid demographics">
+  <div class="row">
+    <div class="col-md-12">
+         <h4>How many stoves did you sell in 2020?</h4>
+  <input id="stove_sales" placeholder="# of Cookstoves Sold" class="cca_input" type="number">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <h4>How many of these were sold directly to the end customer?</h4>
+  <input id="stoves_sales_direct" placeholder="# Sold Directly" class="cca_input_half" type="number">
+    </div>
+    <div class="col-md-6">
+        <h4>How many of these were sold through a distributor?</h4>
+  <input id="stoves_sales_distributor" placeholder="# Sold Through Distributors" class="cca_input_half" type="number">
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- Start of country search -->
+  <h4>In what countries did you sell stoves in 2020? Add all that apply.</h4>
+  <input id="country_search" placeholder="Type to search country list..."/>
+
+  <div id="country_chbx"></div>
+  <!-- Checkboxes will be added here dynamically -->
+
+  <!-- End of country search -->
+
+  <!-- Start of cookstove types -->
+<h4>What types of cookstoves did you sell in 2020? Select all that apply.</h4>
+<div id="div_stove_type">
+<label class="stove_type" ><input type="checkbox" id="solar" value="solar" class="stove_type_chx" onclick="prep_table()">Solar cooker (thermal energy, not solar panels)</label>
+<label class="stove_type" ><input type="checkbox" id="elec_res" value="elec_res" class="stove_type_chx" onclick="prep_table()">Electric stove, resistive</label>
+<label class="stove_type" ><input type="checkbox" id="elec_ind" value="elec_ind" class="stove_type_chx" onclick="prep_table()">Electric stove, inductive</label>
+<label class="stove_type" ><input type="checkbox" id="elec_coo" value="elec_coo" class="stove_type_chx" onclick="prep_table()">Electric cooker (multi-use pressure cooker) </label>
+<label class="stove_type" ><input type="checkbox" id="nat_gas" value="nat_gas" class="stove_type_chx" onclick="prep_table()">Piped natural gas stove</label>
+<label class="stove_type" ><input type="checkbox" id="biogas" value="biogas" class="stove_type_chx" onclick="prep_table()">Biogas stove</label>
+<label class="stove_type" ><input type="checkbox" id="lpg" value="lpg" class="stove_type_chx" onclick="prep_table()">LPG/cooking gas stove</label>
+<label class="stove_type" ><input type="checkbox" id="mps" value="mps" class="stove_type_chx" onclick="prep_table()">Manufactured portable solid-fuel stove</label>
+<label class="stove_type" ><input type="checkbox" id="aps" value="aps" class="stove_type_chx" onclick="prep_table()">Artisan-crafted portable solid-fuel stove</label>
+<label class="stove_type" ><input type="checkbox" id="mss" value="mss" class="stove_type_chx" onclick="prep_table()">Manufactured stationary solid-fuel stove</label>
+<label class="stove_type" ><input type="checkbox" id="art" value="art" class="stove_type_chx" onclick="prep_table()">Artisan-crafted stationary stove</label>
+<label class="stove_type" ><input type="checkbox" id="liq" value="liq" class="stove_type_chx" onclick="prep_table()">Liquid/gel fuel stove</label>
+<label class="stove_type" style="display:inline-block !important;"><input type="checkbox" id="oth " value="oth" name="chx_other" class="stove_type_chx" onclick="prep_table()">Other</label>
+<input type="text" id="other_chx" style="display: none;" />
+</div>
+
+  <!-- End of cookstove types -->
+
+  <!-- Start of main input table -->
+<h4>Please Provide Us Details on the Cookstoves You Sold in 2020</h4>
+<table id="stove_info_table">
+  <tr>
+    <th>Cookstove Type</th>
+    <th>Applicable Countries</th>
+    <th># Sold Per Country in 2020</th>
+    <th>Cookstove Characteristics</th>
+    <th>ISO Tiers 0-5 (if applicable)</th>
+  </tr>
+  <tbody id=stove_info_table_body></tbody>
+</table>
+
+<div id="no_stove_sales" class="no_data">Begin by adding the countries in which you sold stoves and the types of stoves you sold in 2020 above.</div>
+
+  <!-- End of main input table -->
+
+  <h2>Fuels Sales Detail</h2>
+  <!-- Start of country search -->
+  <h4>In what countries did you sell fuels in 2020? Select all that apply.</h4>
+  <input id="country_search_fuels" placeholder="Type to search country list..."/>
+
+  <div id="country_chbx2"></div>
+  <!-- Checkboxes will be added here dynamically -->
+
+
+<!-- Start of fuels types -->
+<h4>What types of fuels did you sell in 2020? Select all that apply.</h4>
+<div id="fuels_select"></div>
+
+<h4>What Was the Total Amount You Sold of Each Fuel in 2020?</h4>
+<table id="fuels_sales">
+  <tr>
+    <th>Fuel Type</th>
+    <th>Amount Sold</th>
+<!--     <th>Unit of Measurement</th> -->
+  </tr>
+  <tbody id=fuel_sales_body></tbody>
+</table>
+<div id="no_fuel_sales" class="no_data">Begin by adding details of the fuels you sold in 2020 above.</div>
+
+<!-- <h4>Please Provide Us Details on the Fuels You Sold in 2020</h4>
+<table id="fuels_info_table">
+  <tr>
+    <th>Country Where You Sold Fuels</th>
+    <th>Fuels Sold in this Country</th>
+    <th>Amount of this Fuel Sold</th>
+  </tr>
+  <tbody id=fuel_info_table_body></tbody>
+</table>
+<div id="no_fuel_sales_loc" class="no_data">Begin by adding details of the quantity and location of fuel sales in 2020 above.</div> -->
+
+  <!-- your content here... -->
+      <script type="text/javascript">
+        $('input.currency').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40) return;
+
+  // format number
+  $(this).val(function(index, value) {
+    return value
+    .replace(/\D/g, "")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+    </script>
+
+  <script src="js/awesomplete.js"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+</html>

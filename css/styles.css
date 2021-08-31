@@ -1,0 +1,172 @@
+body {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.cca_input {
+    display: inline-block;
+    width:50vw;
+}
+
+.cca_input_half {
+    width: 25vw;
+}
+
+.currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
+}
+
+span.currencyinput {
+    display: inline-block;
+}
+
+
+
+  /*Start of checkbox buttons*/
+
+#ck-button {
+/*    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+    float:left;
+    display: none;*/
+}
+
+
+div#ck-button {
+    margin: auto;
+    text-align: center;
+    display: inline-flex;
+}
+
+
+#ck-button label {
+
+    width:auto;
+}
+
+#ck-button label span {
+    text-align:center;
+    padding:3px 0px;
+    display:none;
+}
+
+#ck-button label input {
+    position:absolute;
+    top:-20px;
+}
+
+#ck-button input:checked + span {
+  display: inline-block;
+  border-style: solid;
+  border-radius: 10px;
+  background-color: lightblue;
+  padding-left: 20px;
+  padding-right: 5px;
+}
+
+span.close {
+    display: inline-block !important;
+    margin-left: 20px !important;
+    font-weight: bolder !important;
+    padding: 5px !important;
+}
+
+
+   /*End of checkbox buttons*/
+
+label.stove_type {
+    display: block;
+}
+
+h4 {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    font-size: 1.2em;
+    padding-top: 10px;
+}
+
+label.in_table {
+    display: block;
+}
+
+/*Format tables*/
+table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-style: hidden;
+            /*Remove all the outside
+            borders of the existing table*/
+        }
+        table td {
+            padding: 0.5rem;
+            border: 5px solid #183B72;
+        }
+        table th {
+            padding: 0.5rem;
+            border: 5px solid #578C43;
+        }
+
+/*End tables*/
+
+.no_data {
+    background-color: #0280BF;
+    color:white;
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: bolder;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bolder;
+    background-color: #578C43;
+    padding: 10px;
+    margin: 15px 0px 10px 0px;
+    color: white;
+}
+
+h3 {
+    padding: 5px;
+    width: 75vw;
+    background-color: #0280BF;
+    margin: auto;
+    margin-top: 30px;
+    color: white;
+}
+
+.demographics {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-style: solid;
+    width: 75vw;
+    margin-top: 10px;
+}
+
+div#div_stove_type {
+    text-align: left;
+    margin: auto;
+    width: 29vw;
+}
+
+
+tbody#stove_info_table_body > tr {
+    text-align: left;
+}
+
+tbody#fuel_sales_body > tr {
+    text-align: left;
+}
+
+
+div#fuels_select {
+    text-align: left;
+    margin: auto;
+    width: 26vw;
+}
+
