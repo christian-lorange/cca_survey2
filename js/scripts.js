@@ -930,8 +930,8 @@ function createtable() {
 
 			        var values = ["","kg","Litre","pound"];
                 	var select = document.createElement("select");
-                	select.name = "sales_unit_" + fuels_code[i];
-                	select.id = "sales_unit_" + fuels_code[i];
+                	select.name = country_code[j]+"_sales_unit_" + fuels_code[i];
+                	select.id = country_code[j]+"_sales_unit_" + fuels_code[i];
                 	for (const val of values) {
                     	var option = document.createElement("option");
                     	option.value = val;
@@ -1059,14 +1059,22 @@ async function set_values(){
       document.getElementById(all_inputs[i].id).checked=true;
       console.log("was true")
     }
-
     else if(k.includes(all_inputs[i].id)){
       l=k.indexOf(all_inputs[i].id)
       results[0].get(k[l])
       document.getElementById(all_inputs[i].id).value=results[0].get(k[l]);
     }
-
  }
+
+inputs_select = document.getElementsByTagName("select");
+for (let i = 0; i < inputs_select.length; i++) {
+  if(k.includes(inputs_select[i].id)){
+    l=k.indexOf(inputs_select[i].id)
+    console.log(i)
+      document.getElementById(inputs_select[i].id).value=results[0].get(k[l]);
+
+  }
+}
 
 
 }
