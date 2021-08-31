@@ -1007,6 +1007,7 @@ function currency_change(event) {
 };
 
 async function save_values(){
+document.getElementById("saving").style.display="block";
 input_ids=[];
 input_vals=[];
 all_inputs = document.getElementsByTagName("input");
@@ -1048,12 +1049,14 @@ myObj.set(input_ids[i],input_vals[i])
 myObj.set("user_id",user_id)
 setTimeout(function() {
 myObj.save();  //Send data to server
+document.getElementById("saving").style.display="none";
 }, 3000);
 
 }
 
 
 async function set_values(){
+
   const query = new Parse.Query("cca_survey2"); //Connect to server
   query.equalTo("user_id", user_id);
   query.descending("updatedAt");
@@ -1084,10 +1087,13 @@ for (let i = 0; i < inputs_select.length; i++) {
  }
 }
 
-setTimeout(function() {prep_table()}, 3000);
+setTimeout(function() {prep_table()
+document.getElementById("loading").style.display="none";
+  }, 5000);
 }
 
 function load(){
+  document.getElementById("loading").style.display="block";
   setTimeout(function() {
   set_values()
 }, 1000);
@@ -1095,3 +1101,39 @@ function load(){
 
 load();
 
+function grants_check(){
+  if(parseInt((document.getElementById("tot_investment").value.replace(/,/g, "")))<parseInt(document.getElementById("tot_grants").value.replace(/,/g, ""))){
+    document.getElementById("grants_check").style.display="block";
+  }
+  else{document.getElementById("grants_check").style.display="none";}
+  
+}
+
+function male_check(){
+  if(parseInt(document.getElementById("male_employees").value)!==parseInt(document.getElementById("male_employees_pt").value)+parseInt(document.getElementById("male_employees_fl").value)){
+    document.getElementById("male_check").style.display="block";
+  }
+  else{document.getElementById("male_check").style.display="none";}
+  }
+
+  function female_check(){
+  if(parseInt(document.getElementById("female_employees").value)!==parseInt(document.getElementById("female_employees_pt").value)+parseInt(document.getElementById("female_employees_fl").value)){
+    document.getElementById("female_check").style.display="block";
+  }
+  else{document.getElementById("female_check").style.display="none";}
+  }
+
+    function nbi_check(){
+  if(parseInt(document.getElementById("nonbinary_employees").value)!==parseInt(document.getElementById("nonbinary_employees_pt").value)+parseInt(document.getElementById("nonbinary_employees_fl").value)){
+    document.getElementById("nonbinary_check").style.display="block";
+  }
+  else{document.getElementById("nonbinary_check").style.display="none";}
+  }
+
+
+      function sales_check(){
+  if(parseInt(document.getElementById("stove_sales").value)!==parseInt(document.getElementById("stoves_sales_direct").value)+parseInt(document.getElementById("stoves_sales_distributor").value)){
+    document.getElementById("sales_check").style.display="block";
+  }
+  else{document.getElementById("sales_check").style.display="none";}
+  }

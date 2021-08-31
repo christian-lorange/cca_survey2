@@ -44,27 +44,29 @@
   <h3>Company Financials</h3>
   <h4>What is your total $USD revenue in 2020?</h4>
   <span class="currencyinput">$<input id="tot_revenue" placeholder="Total Revenue Sales (USD)" class="cca_input currency" type="text" ></span>
-  <h4>Capital raised- Please provide details of capital raised from company inception to date.</h4>
-  <span class="currencyinput">$<input id="tot_investment" placeholder="Total Investment (USD)" class="cca_input currency" type="text"></span>
+  <h4>Please provide the total USD amount of capital raised from the start of the company to date.</h4>
+  <span class="currencyinput">$<input id="tot_investment" placeholder="Total Investment (USD)" class="cca_input currency" type="text" onchange="grants_check()"></span>
   <h4>Of that amount of capital, how much are grants?</h4>
-  <span class="currencyinput">$<input id="tot_grants" placeholder="Total Grant Amount (USD)" class="cca_input currency" type="text"></span>
+  <span class="currencyinput">$<input id="tot_grants" placeholder="Total Grant Amount (USD)" class="cca_input currency" type="text" onchange="grants_check()"></span>
+  <div id="grants_check" style="display: none" class="error_checks">The total amount of grants must be less than the total capital raise.</div>
 
   <h3>Company Demographics</h3>
   <div class="container-fluid demographics">
   <div class="row">
     <div class="col-md-12">
         <h4>Number of employees- male</h4>
-  <input id="male_employees" placeholder="# of Male Employees" class="cca_input" type="number">
+  <input id="male_employees" placeholder="# of Male Employees" class="cca_input" type="number" onchange="male_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
         <h4>Number of part time male employees</h4>
-  <input id="male_employees_pt" placeholder="# of Part Time Male Employees" class="cca_input_half" type="number">
+  <input id="male_employees_pt" placeholder="# of Part Time Male Employees" class="cca_input_half" type="number" onchange="male_check()">
     </div>
     <div class="col-md-6">
         <h4>Number of full time male employees</h4>
-  <input id="male_employees_fl" placeholder="# of Full Time Male Employees" class="cca_input_half" type="number">
+  <input id="male_employees_fl" placeholder="# of Full Time Male Employees" class="cca_input_half" type="number" onchange="male_check()">
+  <div id="male_check" style="display: none" class="error_checks">The total amount of male employees must equal the sum of part-time and full-time male employees</div>
 
     </div>
   </div>
@@ -74,17 +76,18 @@
   <div class="row">
     <div class="col-md-12">
         <h4>Number of employees- female</h4>
-  <input id="female_employees" placeholder="# of Female Employees" class="cca_input" type="number">
+  <input id="female_employees" placeholder="# of Female Employees" class="cca_input" type="number" onchange="female_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
         <h4>Number of part time female employees</h4>
-  <input id="female_employees_pt" placeholder="# of Part Time Female Employees" class="cca_input_half" type="number">
+  <input id="female_employees_pt" placeholder="# of Part Time Female Employees" class="cca_input_half" type="number" onchange="female_check()">
     </div>
     <div class="col-md-6">
         <h4>Number of full time female employees</h4>
-  <input id="female_employees_fl" placeholder="# of Full Time Female Employees" class="cca_input_half" type="number">
+  <input id="female_employees_fl" placeholder="# of Full Time Female Employees" class="cca_input_half" type="number" onchange="female_check()">
+    <div id="female_check" style="display: none" class="error_checks">The total amount of female employees must equal the sum of part-time and full-time female employees</div>
     </div>
   </div>
 </div>
@@ -93,18 +96,19 @@
 <div class="container-fluid demographics">
   <div class="row">
     <div class="col-md-12">
-        <h4>Number of non-binary employees</h4>
-  <input id="nonbinary_employees" placeholder="# of Non-Binary Employees" class="cca_input" type="number">
+        <h4>Number of other/non-binary employees</h4>
+  <input id="nonbinary_employees" placeholder="# of Other/Non-Binary Employees" class="cca_input" type="number" onchange="nbi_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-        <h4>Number of part time non-binary employees</h4>
-  <input id="nonbinary_employees_pt" placeholder="# of Part Time Non-Binary Employees" class="cca_input_half" type="number">
+        <h4>Number of part time other/non-binary employees</h4>
+  <input id="nonbinary_employees_pt" placeholder="# of Part Time Other/Non-Binary Employees" class="cca_input_half" type="number" onchange="nbi_check()">
     </div>
     <div class="col-md-6">
-        <h4>Number of full time non-binary employees</h4>
-  <input id="nonbinary_employees_fl" placeholder="# of Full Time Non-Binary Employees" class="cca_input_half" type="number">
+        <h4>Number of full time other/non-binary employees</h4>
+  <input id="nonbinary_employees_fl" placeholder="# of Full Time Other/Non-Binary Employees" class="cca_input_half" type="number" onchange="nbi_check()">
+      <div id="nonbinary_check" style="display: none" class="error_checks">The total amount of other/non-binary employees must equal the sum of part-time and full-time other/non-binary employees</div>
     </div>
   </div>
 </div>
@@ -119,17 +123,18 @@
   <div class="row">
     <div class="col-md-12">
          <h4>How many stoves did you sell in 2020?</h4>
-  <input id="stove_sales" placeholder="# of Cookstoves Sold" class="cca_input" type="number">
+  <input id="stove_sales" placeholder="# of Cookstoves Sold" class="cca_input" type="number" onchange="sales_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
         <h4>How many of these were sold directly to the end customer?</h4>
-  <input id="stoves_sales_direct" placeholder="# Sold Directly" class="cca_input_half" type="number">
+  <input id="stoves_sales_direct" placeholder="# Sold Directly" class="cca_input_half" type="number" onchange="sales_check()">
     </div>
     <div class="col-md-6">
         <h4>How many of these were sold through a distributor?</h4>
-  <input id="stoves_sales_distributor" placeholder="# Sold Through Distributors" class="cca_input_half" type="number">
+  <input id="stoves_sales_distributor" placeholder="# Sold Through Distributors" class="cca_input_half" type="number" onchange="sales_check()">
+        <div id="sales_check" style="display: none" class="error_checks">The total amount of cookstoves sold should match the sum of the number sold to end customers and sold to distributors</div>
     </div>
   </div>
 </div>
@@ -220,6 +225,10 @@
 <div id="no_fuel_sales_loc" class="no_data">Begin by adding details of the quantity and location of fuel sales in 2020 above.</div> -->
 
 <button type="button" id="save_results" onclick="save_values()">Save/Submit</button>
+
+<div id="saving">Saving your data. Please wait.....</div>
+
+<div id="loading">We are loading your data. Please wait.....</div>
  
 
   <!-- your content here... -->

@@ -170,3 +170,29 @@ div#fuels_select {
     width: 26vw;
 }
 
+div#saving {
+    position: fixed;
+    background-color: red;
+    font-size: 3em;
+    top: 50%;
+    width: 100%;
+    display: none;
+}
+
+div#loading {
+    position: fixed;
+    background-color: rgba(87,140,67,0.85);
+    font-size: 3em;
+    width: 100%;
+    top: 0;
+    height: 100vw;
+    display: none;
+    color: white;
+}
+
+
+/*error checks*/
+.error_checks {
+    color: red;
+    font-style: italic;
+}
