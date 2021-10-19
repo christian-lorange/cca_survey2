@@ -9,7 +9,20 @@
   <meta name="description" content="Clean Cooking Alliance Survey">
   <meta name="author" content="Dr. Christian L'Orange, OrangeHouse LLC">
 
-  <link rel="shortcut icon" type="image/png" href="https://orangehousellc.com/wp-content/uploads/sites/11/2017/04/orangehouse.png"/>
+  <script
+  src="https://browser.sentry-cdn.com/6.12.0/bundle.min.js"
+  integrity="sha384-S3qfdh3AsT1UN84WIYNuOX9vVOoFg3nB17Jp5/pTFGDBGBt+dtz7MGAV845efkZr"
+  crossorigin="anonymous"
+></script>
+
+ <script type="text/javascript">
+    Sentry.init({
+  dsn: "https://efd5fddad3194193bd366dd53edf9ba2@o922281.ingest.sentry.io/5869290"
+});
+   
+ </script>   
+
+  <link rel="shortcut icon" type="image/png" href="https://cleancookingalliance.org/wp-content/uploads/2021/08/cca-hires-2@4x.png"/>
 
 
 
@@ -36,6 +49,11 @@
 
 <body>
 
+<img id="header_logo" src="https://cleancookingalliance.org/wp-content/uploads/2021/08/cca-hires-2@4x.png">
+<p class="intro">CCA has been privileged to partner with you on a project in 2020. The data request below is necessary to meet the reporting requirements of the agreement between you, CCA and CCA’s donors for our project work together. Meeting these obligations is a critical step to ensure the ongoing commitment of those donors to our work.
+</p>
+<p class="intro">The data you provide will be held securely and treated in a highly confidential manner. The data submitted in this form will not be shared, or referenced, publicly. The data will be aggregated and presented to CCA’s donors that funded our project work together.</p>
+
 
   <h2>Organizational Information</h2>
   <h4>Organization Name:</h4>
@@ -55,17 +73,17 @@
   <div class="row">
     <div class="col-md-12">
         <h4>Number of employees- male</h4>
-  <input id="male_employees" placeholder="# of Male Employees" class="cca_input" type="number" onchange="male_check()">
+  <input id="male_employees" placeholder="# of Male Employees" class="cca_input" type="number" min=0 oninput="validity.valid||(value='')" onchange="male_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-        <h4>Number of part time male employees</h4>
-  <input id="male_employees_pt" placeholder="# of Part Time Male Employees" class="cca_input_half" type="number" onchange="male_check()">
+        <h4>Number of part-time male employees</h4>
+  <input id="male_employees_pt" placeholder="# of Part Time Male Employees" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="male_check()">
     </div>
     <div class="col-md-6">
         <h4>Number of full time male employees</h4>
-  <input id="male_employees_fl" placeholder="# of Full Time Male Employees" class="cca_input_half" type="number" onchange="male_check()">
+  <input id="male_employees_fl" placeholder="# of Full Time Male Employees" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="male_check()">
   <div id="male_check" style="display: none" class="error_checks">The total amount of male employees must equal the sum of part-time and full-time male employees</div>
 
     </div>
@@ -76,17 +94,17 @@
   <div class="row">
     <div class="col-md-12">
         <h4>Number of employees- female</h4>
-  <input id="female_employees" placeholder="# of Female Employees" class="cca_input" type="number" onchange="female_check()">
+  <input id="female_employees" placeholder="# of Female Employees" class="cca_input" type="number" min=0 oninput="validity.valid||(value='')" onchange="female_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-        <h4>Number of part time female employees</h4>
-  <input id="female_employees_pt" placeholder="# of Part Time Female Employees" class="cca_input_half" type="number" onchange="female_check()">
+        <h4>Number of part-time female employees</h4>
+  <input id="female_employees_pt" placeholder="# of Part Time Female Employees" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="female_check()">
     </div>
     <div class="col-md-6">
         <h4>Number of full time female employees</h4>
-  <input id="female_employees_fl" placeholder="# of Full Time Female Employees" class="cca_input_half" type="number" onchange="female_check()">
+  <input id="female_employees_fl" placeholder="# of Full Time Female Employees" class="cca_input_half" type="number"  min=0 oninput="validity.valid||(value='')"onchange="female_check()">
     <div id="female_check" style="display: none" class="error_checks">The total amount of female employees must equal the sum of part-time and full-time female employees</div>
     </div>
   </div>
@@ -96,23 +114,42 @@
 <div class="container-fluid demographics">
   <div class="row">
     <div class="col-md-12">
-        <h4>Number of other/non-binary employees</h4>
-  <input id="nonbinary_employees" placeholder="# of Other/Non-Binary Employees" class="cca_input" type="number" onchange="nbi_check()">
+        <h4>Number of gender unknown/other/non-binary employees</h4>
+  <input id="nonbinary_employees" placeholder="# of Other/Non-Binary Employees" class="cca_input" type="number" min=0 oninput="validity.valid||(value='')" onchange="nbi_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-        <h4>Number of part time other/non-binary employees</h4>
-  <input id="nonbinary_employees_pt" placeholder="# of Part Time Other/Non-Binary Employees" class="cca_input_half" type="number" onchange="nbi_check()">
+        <h4>Number of part-time gender unknown/other/non-binary employees</h4>
+  <input id="nonbinary_employees_pt" placeholder="# of Part Time Other/Non-Binary Employees" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="nbi_check()">
     </div>
     <div class="col-md-6">
-        <h4>Number of full time other/non-binary employees</h4>
-  <input id="nonbinary_employees_fl" placeholder="# of Full Time Other/Non-Binary Employees" class="cca_input_half" type="number" onchange="nbi_check()">
-      <div id="nonbinary_check" style="display: none" class="error_checks">The total amount of other/non-binary employees must equal the sum of part-time and full-time other/non-binary employees</div>
+        <h4>Number of full time gender unknown/other/non-binary employees</h4>
+  <input id="nonbinary_employees_fl" placeholder="# of Full Time Other/Non-Binary Employees" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="nbi_check()">
+      <div id="nonbinary_check" style="display: none" class="error_checks">The total amount of gender unknown/other/non-binary employees must equal the sum of part-time and full-time gender unknown/other/non-binary employees</div>
     </div>
   </div>
 </div>
 
+<div class="container-fluid demographics">
+  <div class="row">
+    <div class="col-md-4">
+        <h4>Number of male employees in a management role</h4>
+  <input id="male_management" placeholder="# of males in management" class="cca_input_3" type="number" min=0 oninput="validity.valid||(value='')" onchange="male_management_check()">
+  <div id="male_management_check" style="display: none" class="error_checks">The number of male employees in management cannot be greater then the total number of male employees</div>
+    </div>
+        <div class="col-md-4">
+        <h4>Number of female employees in a management role</h4>
+  <input id="female_management" placeholder="# of females in management" class="cca_input_3" type="number" min=0 oninput="validity.valid||(value='')" onchange="female_management_check()">
+    <div id="female_management_check" style="display: none" class="error_checks">The number of female employees in management cannot be greater then the total number of female employees</div>
+    </div>
+        <div class="col-md-4">
+        <h4>Number of gender unknown/other/non-binary in a management role</h4>
+  <input id="nonbinary_management" placeholder="# of other/non-binary employees in management_3" class="cca_input_3" type="number" min=0 oninput="validity.valid||(value='')" onchange="other_management_check()">
+      <div id="other_management_check" style="display: none" class="error_checks">The number of gender unknown/other/non-binary employees in management cannot be greater then the total number of gender unknown/other/non-binary employees</div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -123,17 +160,17 @@
   <div class="row">
     <div class="col-md-12">
          <h4>How many stoves did you sell in 2020?</h4>
-  <input id="stove_sales" placeholder="# of Cookstoves Sold" class="cca_input" type="number" onchange="sales_check()">
+  <input id="stove_sales" placeholder="# of Cookstoves Sold" class="cca_input" type="number" min=0 oninput="validity.valid||(value='')" onchange="sales_check()">
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
         <h4>How many of these were sold directly to the end customer?</h4>
-  <input id="stoves_sales_direct" placeholder="# Sold Directly" class="cca_input_half" type="number" onchange="sales_check()">
+  <input id="stoves_sales_direct" placeholder="# Sold Directly" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="sales_check()">
     </div>
     <div class="col-md-6">
         <h4>How many of these were sold through a distributor?</h4>
-  <input id="stoves_sales_distributor" placeholder="# Sold Through Distributors" class="cca_input_half" type="number" onchange="sales_check()">
+  <input id="stoves_sales_distributor" placeholder="# Sold Through Distributors" class="cca_input_half" type="number" min=0 oninput="validity.valid||(value='')" onchange="sales_check()">
         <div id="sales_check" style="display: none" class="error_checks">The total amount of cookstoves sold should match the sum of the number sold to end customers and sold to distributors</div>
     </div>
   </div>
@@ -184,8 +221,9 @@
   </tr>
   <tbody id=stove_info_table_body></tbody>
 </table>
+ <div id="stove_sales_error" style="display: none" class="error_checks">The total number of stove sales broken down by country should not exceeed the number of stoves listed above.</div>
 
-<div id="no_stove_sales" class="no_data">Begin by adding the countries in which you sold stoves and the types of stoves you sold in 2020 above.</div>
+<div id="no_stove_sales" class="no_data" onclick="sales_check()">Begin by adding the countries in which you sold stoves and the types of stoves you sold in 2020 above.</div>
 
   <!-- End of main input table -->
 
@@ -225,6 +263,7 @@
 <div id="no_fuel_sales_loc" class="no_data">Begin by adding details of the quantity and location of fuel sales in 2020 above.</div> -->
 
 <button type="button" id="save_results" onclick="save_values()">Save/Submit</button>
+<div id="error_warning">There appear to be errors in the data you have input. Please correct them before moving forward.</div>
 
 <div id="saving">Saving your data. Please wait.....</div>
 

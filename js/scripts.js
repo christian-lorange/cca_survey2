@@ -635,6 +635,12 @@ var stove_attributes = [
 'Don\'t know details'
 ];
 
+var wood_stove_attributes = [
+'Uses Unprocessed Biomass',
+'Uses Processed Biomass (Pellets or Briquettes)',
+'Uses Charcoal'
+];
+
 var tiers = [
 'Emissions',
 'Efficieny',
@@ -647,10 +653,11 @@ var array_fuels = [
 'Alcohol/ethanol',
 'Gasoline/diesel (not in generator)',
 'Kerosene/paraffin',
-'Coal/lignite briquettes/pellets',
-'Charcoal briquettes/pellets',
+'Coal/lignite briquettes',
+'Charcoal briquettes',
 'Wood',
-'Biomass pellets/briquettes',
+'Biomass pellets',
+'Non-charred briquettes',
 'Woodchips',
 'Sawdust',
 'Liquified petroleum gas/cooking gas',
@@ -665,6 +672,7 @@ var fuels_code = [
 'cha',
 'woo',
 'pel',
+'non_char'
 'chi',
 'dus',
 'f_lpg',
@@ -843,11 +851,18 @@ function createtable() {
                     checkbox.type = "number";
                     checkbox.id = "sales_"+stove_id[i] + "_" + country_code[j];
                     checkbox.placeholder = "# Sold in "+country[j]
+                    checkbox.min = 0;
+                    checkbox.classList.add('class_stove_sales')
+                    checkbox.onclick = "validity.valid||(value='')"
                     var label = document.createElement('label')
                     label.id = "label_sales_"+stove_id[i] + "_" + country_code[j];
                     label.classList.add('in_table');
                     label.appendChild(checkbox);
                     td3.appendChild(label)
+                    checkbox.addEventListener('input', function(){
+                      if(this.value<0){this.value=""}}, true);
+                    checkbox.addEventListener('input', function(){
+                      total_stoves_check()}, true);
                 // }
              }
             tr.appendChild(td3);
@@ -869,6 +884,23 @@ function createtable() {
                 label.appendChild(t_span)
                 td4.appendChild(label)
             }
+              if (i >= 7 && i <= 10){
+             for (let k = 0; k < wood_stove_attributes.length; k++) {
+                var checkbox = document.createElement('input');
+                checkbox.type = "checkbox";
+                checkbox.value = k.toString();
+                checkbox.id = stove_id[i] + "_" + wood_stove_attributes[k];
+
+                var label = document.createElement('label')
+                label.classList.add('in_table');
+                label.classList.add('wood_stove');
+                var t_span = document.createElement('span');
+                t_span.innerHTML = wood_stove_attributes[k];
+                label.appendChild(checkbox);
+                label.appendChild(t_span)
+                td4.appendChild(label)
+            }
+            }  
             tr.appendChild(td4)
 
             // Adding tiers
@@ -932,6 +964,8 @@ function createtable() {
 			        checkbox.id = "amount_sold_" + fuels_code[i] + "_" + country_code[j];
 			        checkbox.type = "number";
 			        checkbox.placeholder = "Quantity sold"
+              checkbox.addEventListener('input', function(){
+              if(this.value<0){this.value=""}}, true);
 			        label.appendChild(checkbox);
 
 			        var values = ["","kg","Litre","pound"];
@@ -1106,7 +1140,7 @@ function grants_check(){
     document.getElementById("grants_check").style.display="block";
   }
   else{document.getElementById("grants_check").style.display="none";}
-  
+   error_block() 
 }
 
 function male_check(){
@@ -1114,6 +1148,7 @@ function male_check(){
     document.getElementById("male_check").style.display="block";
   }
   else{document.getElementById("male_check").style.display="none";}
+    error_block()
   }
 
   function female_check(){
@@ -1121,13 +1156,43 @@ function male_check(){
     document.getElementById("female_check").style.display="block";
   }
   else{document.getElementById("female_check").style.display="none";}
+      error_block()
   }
 
     function nbi_check(){
+
   if(parseInt(document.getElementById("nonbinary_employees").value)!==parseInt(document.getElementById("nonbinary_employees_pt").value)+parseInt(document.getElementById("nonbinary_employees_fl").value)){
     document.getElementById("nonbinary_check").style.display="block";
   }
   else{document.getElementById("nonbinary_check").style.display="none";}
+        error_block()
+  }
+
+    function male_management_check(){
+
+  if(parseInt(document.getElementById("male_management").value)>parseInt(document.getElementById("male_employees").value)){
+    document.getElementById("male_management_check").style.display="block";
+  }
+  else{document.getElementById("male_management_check").style.display="none";}
+        error_block()
+  }
+
+    function female_management_check(){
+
+  if(parseInt(document.getElementById("female_management").value)>parseInt(document.getElementById("female_employees").value)){
+    document.getElementById("female_management_check").style.display="block";
+  }
+  else{document.getElementById("female_management_check").style.display="none";}
+       error_block()
+  }
+
+      function other_management_check(){
+
+   if(parseInt(document.getElementById("nonbinary_management").value)>parseInt(document.getElementById("nonbinary_employees").value)){
+    document.getElementById("other_management_check").style.display="block";
+  }
+  else{document.getElementById("other_management_check").style.display="none";}
+        error_block()
   }
 
 
@@ -1136,4 +1201,46 @@ function male_check(){
     document.getElementById("sales_check").style.display="block";
   }
   else{document.getElementById("sales_check").style.display="none";}
+          error_block()
+  }
+
+  function total_stoves_check(){
+    var sales_divs = document.getElementById("stove_info_table").getElementsByClassName("class_stove_sales");
+
+    var sales = 0;
+    for (var i = 0; i < sales_divs.length; i++) {
+      if (parseInt(sales_divs[i].value)>0) {
+      sales += parseInt(sales_divs[i].value)
+      }
+  }
+  if (sales > parseInt(document.getElementById("stove_sales").value)) {
+    document.getElementById("stove_sales_error").style.display="block"
+  }
+  else {document.getElementById("stove_sales_error").style.display="none"}
+      error_block()
+}
+
+  function error_block(){
+    err_sum = 0;
+    errors_list = document.getElementsByClassName("error_checks")
+    for (var i = 0; i < errors_list.length; i++) {
+      if (errors_list[i].style.display=="block") {
+        err_val=1;
+      }
+      else {
+        err_val=0
+      }
+      err_sum += err_val;
+    }
+
+    console.log(err_sum)
+
+    if (err_sum>0){
+      document.getElementById("save_results").style.display="none"
+      document.getElementById("error_warning").style.display="block"
+    }
+    else {
+      document.getElementById("save_results").style.display="block"
+      document.getElementById("error_warning").style.display="none"
+    }
   }

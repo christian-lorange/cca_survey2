@@ -1,0 +1,98 @@
+<html>
+
+  <head>
+      <link rel="shortcut icon" type="image/png" href="https://orangehousellc.com/wp-content/uploads/sites/11/2017/04/orangehouse.png"/>
+    <script data-require="jquery@2.1.1" data-semver="2.1.1" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+      <script src="js/parse.min.js"></script>
+  <script type="text/javascript">
+    Parse.initialize("OrangeHouse");
+    //javascriptKey is required only if you have it on server.
+    Parse.serverURL = 'https://makai-hub.com/parse_OH/parse/'
+
+// Start of load user ID
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const user_id = urlParams.get('id')
+// End of load user ID
+
+
+  async function load(){
+  const query = new Parse.Query("cca_survey2"); //Connect to server
+  query.descending("updatedAt");
+  results = await query.find();
+  console.log(results)
+
+  setTimeout(function() {
+    jsonObject = JSON.stringify(results);
+
+            //Convert JSON Array to string.
+        var json = JSON.stringify(results);
+ 
+        //Convert JSON string to BLOB.
+        json = [json];
+        var blob1 = new Blob(json, { type: "text/plain;charset=utf-8" });
+ 
+        //Check the Browser.
+        var isIE = false || !!document.documentMode;
+        if (isIE) {
+            window.navigator.msSaveBlob(blob1, "CCA_Survey.txt");
+        } else {
+            var url = window.URL || window.webkitURL;
+            link = url.createObjectURL(blob1);
+            var a = document.createElement("a");
+            a.download = "CCA_Survey.txt";
+            a.href = link;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+
+
+ }, 1000);
+  }
+
+
+
+    function DownloadJSON() {
+        //Build a JSON array containing Customer records.
+        //Convert JSON Array to string.
+        var json = JSON.stringify(results);
+ 
+        //Convert JSON string to BLOB.
+        json = [json];
+        var blob1 = new Blob(json, { type: "text/plain;charset=utf-8" });
+ 
+        //Check the Browser.
+        var isIE = false || !!document.documentMode;
+        if (isIE) {
+            window.navigator.msSaveBlob(blob1, "Customers.txt");
+        } else {
+            var url = window.URL || window.webkitURL;
+            link = url.createObjectURL(blob1);
+            var a = document.createElement("a");
+            a.download = "Customers.txt";
+            a.href = link;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
+
+
+  load();
+
+  </script>
+
+
+  </head>
+
+  <body>
+
+<!-- <input type="button" value="Download JSON" onclick="DownloadJSON()" /> -->
+
+  </body>
+
+</html>

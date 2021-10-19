@@ -8,6 +8,11 @@ body {
     width:50vw;
 }
 
+.cca_input_3 {
+    display: inline-block;
+    width:22vw;
+}
+
 .cca_input_half {
     width: 25vw;
 }
@@ -193,6 +198,42 @@ div#loading {
 
 /*error checks*/
 .error_checks {
-    color: red;
+    color: white;
     font-style: italic;
+    background-color: red;
+}
+
+div#error_warning {
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    background-color: red;
+    padding: 20px;
+    font-size: 1.4em;
+    color: white;
+    font-weight: bolder;
+}
+
+button#save_results {
+    margin: auto;
+    background-color: rgba(128,173,75,1);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: white;
+    font-size: 2.5em;
+    margin-top: 30px;
+}
+
+p.intro {
+    width: 80vw;
+    margin: auto;
+    font-size: 1.15em;
+    padding-bottom: 10px;
+}
+
+div#error_warning {
+    display: none;
+}
+
+img#header_logo {
+    width: 40vw;
 }
